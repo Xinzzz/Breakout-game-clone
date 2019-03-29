@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bricks : MonoBehaviour
 {
     public string brickName;
-
     GameManager gm;
     private void Start()
     {
@@ -24,6 +23,11 @@ public class Bricks : MonoBehaviour
         {
             AudioManager.instance.Play("hitRed", 0.6f);
             gm.gameOver = true;
+        }
+        else if(brickName == "Yellow")
+        {
+            AudioManager.instance.Play("hitYellow", 0.5f);
+            collision.transform.GetComponent<Rigidbody2D>().AddForce(transform.up * 700f);
         }
     }
 }

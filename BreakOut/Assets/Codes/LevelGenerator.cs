@@ -19,6 +19,7 @@ public class LevelGenerator : MonoBehaviour
     public float objectY;
     public float spacingX;
     public float spacingY;
+    float setParentScaleFix = 5f;
 
     public Room room;
     public GameManager gm;
@@ -73,8 +74,8 @@ public class LevelGenerator : MonoBehaviour
                 brick.transform.SetParent(room.transform, false);
                 Transform oldParent = brick.transform.parent;
                 brick.transform.parent = null;
-                brick.transform.localScale /= 5;
-                brick.transform.position = new Vector2(brick.transform.position.x / 5, brick.transform.position.y / 5);
+                brick.transform.localScale /= setParentScaleFix;
+                brick.transform.position = new Vector2(brick.transform.position.x / setParentScaleFix, brick.transform.position.y / setParentScaleFix);
                 brick.transform.parent = oldParent;
 
                 if(colorMapping.color.Equals(Color.green))

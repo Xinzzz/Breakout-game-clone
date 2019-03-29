@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator EdAnim(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene(currentScene);
+        SceneManager.LoadScene(nextScene);
     }
 
     private IEnumerator OverAnim(float waitTime)
