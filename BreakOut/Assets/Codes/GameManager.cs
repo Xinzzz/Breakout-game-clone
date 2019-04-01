@@ -5,17 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    //level7 special
+    public GameObject text;
+
     public Animator roomAnim;
     public AnimationClip opAnim;
     public AnimationClip edAnim;
     public AnimationClip overAnim;
     
+    [SerializeField]
+    private static int deathCount = 0;
+
     public List <GameObject> greenBricks = new List<GameObject>();
     
 
     public bool gameOver = false;
     public bool finished = false;
     public bool okToDrag = false;
+    public bool gameOverRefresh = true;
 
     private IEnumerator Iop;
     private IEnumerator Ied;
@@ -43,15 +51,27 @@ public class GameManager : MonoBehaviour
             roomColor.color = new Color(0.576f,0.725f,0.517f,0.9f);
             roomAnim.SetBool("Finished", true);
             Ied = EdAnim(edAnim.length);
-            StartCoroutine(Ied);
+            StartCoroutine(Ied);          
         }
         else if(gameOver)
         {
+            if(gameOverRefresh)
+            {
+                deathCount++;
+                gameOverRefresh = false;
+            }
             roomColor.color = new Color(0.541f, 0.298f, 0.309f, 0.9f);
             roomAnim.SetBool("GameOver", true);
             Iover = OverAnim(overAnim.length);
             StartCoroutine(Iover);
         }
+
+        //Level7 special
+        if(currentScene == 7 && deathCount >= 5)
+        {
+            text.SetActive(true);
+        }
+
     }
 
     private IEnumerator OpAnim(float waitTime)
@@ -64,6 +84,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(nextScene);
+        deathCount = 0;
     }
 
     private IEnumerator OverAnim(float waitTime)
@@ -75,7 +96,6 @@ public class GameManager : MonoBehaviour
 
     public void CountGreenBrick()
     {
-        Debug.Log(greenBricks.Count);
         if(greenBricks.Count == 0)
         {
             AudioManager.instance.Play("compeleted", 0.5f);

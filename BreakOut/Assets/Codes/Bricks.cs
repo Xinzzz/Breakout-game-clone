@@ -24,6 +24,7 @@ public class Bricks : MonoBehaviour
         {
             AudioManager.instance.Play("hitRed", 0.6f);
             gm.gameOver = true;
+            gm.gameOverRefresh = true;
         }
         else if(brickName == "Yellow")
         {

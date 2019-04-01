@@ -10,6 +10,7 @@ public class OpScreen : MonoBehaviour
     IEnumerator fade;
     public GameObject image;
     bool startFading = false;
+    bool fadeInOver = false;
     private void Start()
     {
         opLoadLevel = OpLoad(5f);
@@ -29,7 +30,12 @@ public class OpScreen : MonoBehaviour
     }
     private void Update()
     {
-        if(startFading)
+        if(!fadeInOver)
+        {
+            
+            FadeIn();
+        }
+        if (startFading)
         {
             FadeOut();
         }
@@ -40,5 +46,16 @@ public class OpScreen : MonoBehaviour
         Color temp = image.GetComponent<SpriteRenderer>().color;
         temp.a += Time.deltaTime;
         image.GetComponent<SpriteRenderer>().color = temp;
+    }
+
+    void FadeIn()
+    {
+        Color temp = image.GetComponent<SpriteRenderer>().color;      
+        temp.a -= Time.deltaTime;
+        image.GetComponent<SpriteRenderer>().color = temp;
+        if(image.GetComponent<SpriteRenderer>().color.a <= 0)
+        {
+            fadeInOver = true;
+        }
     }
 }

@@ -458,7 +458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &293274811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,6 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689c89584d1408549a235c26d6c0526c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
   roomAnim: {fileID: 775629535}
   opAnim: {fileID: 7400000, guid: 0e3c55bee4ab7a84b815b24629cdc397, type: 2}
   edAnim: {fileID: 7400000, guid: a715955aec4d8564ca917af54a0188ab, type: 2}
@@ -1247,6 +1248,7 @@ MonoBehaviour:
   gameOver: 0
   finished: 0
   okToDrag: 0
+  gameOverRefresh: 1
   room: {fileID: 775629530}
   roomColor: {fileID: 775629533}
 --- !u!4 &837430298
