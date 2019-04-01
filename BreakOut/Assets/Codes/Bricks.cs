@@ -6,6 +6,7 @@ public class Bricks : MonoBehaviour
 {
     public string brickName;
     GameManager gm;
+    Rigidbody2D ballRb;
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
@@ -29,5 +30,6 @@ public class Bricks : MonoBehaviour
             AudioManager.instance.Play("hitYellow", 0.5f);
             collision.transform.GetComponent<Rigidbody2D>().AddForce(transform.up * 700f);
         }
+        
     }
 }

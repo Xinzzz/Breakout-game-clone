@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2bf2667a0f92c44aa105c4f4df57be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 2800000, guid: 44b418a992e608b41add4f56922f9e40, type: 3}
+  map: {fileID: 2800000, guid: dbc8b51422c207c4798cfc47eba341c5, type: 3}
   offsetX: -2.1
   offsetY: -3.2
   objectX: 0.6
@@ -346,9 +346,6 @@ MonoBehaviour:
       type: 3}
   - color: {r: 1, g: 1, b: 0, a: 1}
     prefab: {fileID: 11186747578908872, guid: 03eaa139929c35348adb92d0cd99757a, type: 3}
-  - color: {r: 0, g: 0, b: 1, a: 1}
-    prefab: {fileID: 4963353393433335279, guid: 2b58b9946a0e5ec428ac49d273738990,
-      type: 3}
   ball: {fileID: 1808272306}
 --- !u!4 &138485862
 Transform:
@@ -480,7 +477,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Level 1
+  m_text: 'Level 5
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5ad14ce06496f34599592a3af0e7a38, type: 2}
   m_sharedMaterial: {fileID: 21641546743651344, guid: e5ad14ce06496f34599592a3af0e7a38,
@@ -550,9 +549,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 7
+    characterCount: 8
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 2
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -1465,7 +1464,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Drag To Hit
+  m_text: Starting Bouncing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5ad14ce06496f34599592a3af0e7a38, type: 2}
   m_sharedMaterial: {fileID: 21641546743651344, guid: e5ad14ce06496f34599592a3af0e7a38,
@@ -1535,10 +1534,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 11
+    characterCount: 17
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1

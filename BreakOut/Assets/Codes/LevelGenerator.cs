@@ -19,7 +19,8 @@ public class LevelGenerator : MonoBehaviour
     public float objectY;
     public float spacingX;
     public float spacingY;
-    float setParentScaleFix = 5f;
+    public float setParentXScaleFix = 5f;
+    public float setParentYScaleFix = 5f;
 
     public Room room;
     public GameManager gm;
@@ -32,13 +33,13 @@ public class LevelGenerator : MonoBehaviour
     {
         GenerateLevel();
         Iball = Ball(gm.opAnim.length - 0.5f);
-        StartCoroutine(Iball);       
+        StartCoroutine(Iball);
     }
 
     private IEnumerator Ball(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        
+
         ball.SetActive(true);
     }
 
@@ -58,27 +59,32 @@ public class LevelGenerator : MonoBehaviour
     {
         Color pixelColor = map.GetPixel(x, y);
 
-        if(pixelColor.a == 0)
+        if (pixelColor.a == 0)
         {
             return;
         }
-        foreach(ColorToPrefab colorMapping in colorMappings)
+        foreach (ColorToPrefab colorMapping in colorMappings)
         {
-            if(colorMapping.color.Equals(pixelColor))
+            if (colorMapping.color.Equals(pixelColor))
             {
                 //prefab's sclae is 0.6 0.4
-                Vector2 pos = new Vector2(x*(objectX+spacingX) + offsetX, y*(objectY+spacingY) + offsetY);
+                Vector2 pos = new Vector2(x * (objectX + spacingX) + offsetX, y * (objectY + spacingY) + offsetY);
 
                 //To fix parent - child scale and position problem.
-                GameObject brick =  Instantiate(colorMapping.prefab, pos, Quaternion.identity);
+                GameObject brick = Instantiate(colorMapping.prefab, pos, Quaternion.identity);
                 brick.transform.SetParent(room.transform, false);
                 Transform oldParent = brick.transform.parent;
                 brick.transform.parent = null;
-                brick.transform.localScale /= setParentScaleFix;
-                brick.transform.position = new Vector2(brick.transform.position.x / setParentScaleFix, brick.transform.position.y / setParentScaleFix);
+
+                Vector3 tempBrickScale = brick.transform.localScale;
+                tempBrickScale.x /= setParentXScaleFix;
+                tempBrickScale.y /= setParentYScaleFix;
+                brick.transform.localScale = tempBrickScale;
+
+                brick.transform.position = new Vector2(brick.transform.position.x / setParentXScaleFix, brick.transform.position.y / setParentYScaleFix);
                 brick.transform.parent = oldParent;
 
-                if(colorMapping.color.Equals(Color.green))
+                if (colorMapping.color.Equals(Color.green))
                 {
                     gm.greenBricks.Add(brick);
                 }
