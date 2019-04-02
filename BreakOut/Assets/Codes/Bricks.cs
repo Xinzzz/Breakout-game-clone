@@ -29,7 +29,7 @@ public class Bricks : MonoBehaviour
         else if(brickName == "Yellow")
         {
             AudioManager.instance.Play("hitYellow", 0.5f);
-            collision.transform.GetComponent<Rigidbody2D>().AddForce(transform.up * 700f);
+            collision.transform.GetComponent<Rigidbody2D>().AddForce(transform.up * gm.yellowBrickForce);
         }
         
     }

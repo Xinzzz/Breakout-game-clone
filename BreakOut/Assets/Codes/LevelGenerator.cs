@@ -25,23 +25,14 @@ public class LevelGenerator : MonoBehaviour
     public Room room;
     public GameManager gm;
     public ColorToPrefab[] colorMappings;
-    public GameObject ball;
 
-    private IEnumerator Iball;
     // Start is called before the first frame update
     void Start()
     {
         GenerateLevel();
-        Iball = Ball(gm.opAnim.length - 0.5f);
-        StartCoroutine(Iball);
     }
 
-    private IEnumerator Ball(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
 
-        ball.SetActive(true);
-    }
 
     void GenerateLevel()
     {

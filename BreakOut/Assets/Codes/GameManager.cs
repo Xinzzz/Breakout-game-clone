@@ -6,16 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    //level7 special
-    public GameObject text;
 
     public Animator roomAnim;
     public AnimationClip opAnim;
     public AnimationClip edAnim;
     public AnimationClip overAnim;
     
-    [SerializeField]
-    private static int deathCount = 0;
 
     public List <GameObject> greenBricks = new List<GameObject>();
     
@@ -34,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public Room room;
     public SpriteRenderer roomColor;
+
+    public float yellowBrickForce = 650f;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +55,6 @@ public class GameManager : MonoBehaviour
         {
             if(gameOverRefresh)
             {
-                deathCount++;
                 gameOverRefresh = false;
             }
             roomColor.color = new Color(0.541f, 0.298f, 0.309f, 0.9f);
@@ -65,12 +62,7 @@ public class GameManager : MonoBehaviour
             Iover = OverAnim(overAnim.length);
             StartCoroutine(Iover);
         }
-
-        //Level7 special
-        if(currentScene == 7 && deathCount >= 5)
-        {
-            text.SetActive(true);
-        }
+       
 
     }
 
@@ -84,7 +76,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(nextScene);
-        deathCount = 0;
     }
 
     private IEnumerator OverAnim(float waitTime)

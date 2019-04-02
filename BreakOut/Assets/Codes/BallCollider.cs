@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BallCollider : MonoBehaviour
 {
-    public GameManager gm;
     Rigidbody2D rb;
     private void OnCollisionEnter2D(Collision2D collision)
     {
